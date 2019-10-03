@@ -5,7 +5,6 @@
 
 1. Create a SQL Server Database - MyCartDB
 2. Set your SQL Server name in the ConnectionString in appsettings.json
-3. Install nuget packages 
 
 ## What you will get
 
