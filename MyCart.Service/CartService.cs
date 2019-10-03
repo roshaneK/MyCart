@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MyCart.Repository.Contracts;
 using MyCart.Repository.Models;
+using MyCart.Resources;
 using MyCart.Resources.Messages;
 using MyCart.Service.Contracts;
 using MyCart.Service.Models;
@@ -19,8 +20,9 @@ namespace MyCart.Service
             this.cartRepository = cartRepository;
         }
 
-        public CartMessages SaveCart(CartDTO cartDto)
+        public ResultObject SaveCart(CartDTO cartDto)
         {
+            CartMessages message;
             try
             {
                 if (cartDto.Items != null && cartDto.Items.Count > 0)
@@ -29,18 +31,24 @@ namespace MyCart.Service
                     cartRepository.Create(cart);
                     cartRepository.Save();
 
-                    return CartMessages.CartSaved;
+                    message = CartMessages.CartSaved;
                 }
                 else
                 {
-                    return CartMessages.CartNotSaved;
+                    message = CartMessages.CartNotSaved;
                 }
             }
             catch (Exception ex)
             {
-                return CartMessages.ErrorSaveCart;
+                message = CartMessages.ErrorSaveCart;
             }
-            
+
+            var result = new ResultObject
+            {
+                Message = message,
+                Result = cartDto
+            };
+            return result;
         }
     }
 }
