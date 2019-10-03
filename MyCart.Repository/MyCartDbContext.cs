@@ -18,7 +18,5 @@ namespace MyCart.Repository
                 .HasOne(p => p.Cart)
                 .WithMany(b => b.Items);
         }
-
-
     }
 }

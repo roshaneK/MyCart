@@ -8,10 +8,13 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\MyCart.Repository\MyCart.Repository.csproj" />
+    <ProjectReference Include="..\MyCart.Service.Contracts\MyCart.Service.Contracts.csproj" />
+    <ProjectReference Include="..\MyCart.Service\MyCart.Service.csproj" />
   </ItemGroup>
 
 </Project>
